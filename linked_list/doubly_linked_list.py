@@ -54,12 +54,13 @@ class DList:
                 print(p.item)
             p = p.next  # 순차탐색
 
+
 class EmptyError(Exception):
     pass
 
 
-s = DList() # 이중 연결 리스트 생성
-s.insert_after(s.head, 'apple') 
+s = DList()  # 이중 연결 리스트 생성
+s.insert_after(s.head, 'apple')
 s.insert_before(s.tail, 'orange')
 s.insert_before(s.tail, 'cherry')
 s.insert_after(s.head.next, 'pear')
