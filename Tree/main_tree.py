@@ -1,10 +1,8 @@
 from binary_tree import BinaryTree, Node
 
 if __name__ == "__main__":
-    # 트리 생성
     t = BinaryTree()
 
-    # 노드 생성
     n1 = Node(100)
     n2 = Node(200)
     n3 = Node(300)
@@ -14,7 +12,6 @@ if __name__ == "__main__":
     n7 = Node(700)
     n8 = Node(800)
 
-    # 노드 연결
     t.root = n1
     n1.left = n2
     n1.right = n3
@@ -24,12 +21,11 @@ if __name__ == "__main__":
     n3.right = n7
     n4.left = n8
 
-    # 탐색
-    print("전위순회:  ", end='')
+    print("전위순회:\t", end='')
     t.pre_order(t.root)
-    print("\n중위순회:  ", end='')
+    print("\n중위순회:\t", end='')
     t.in_order(t.root)
-    print("\n후위순회:  ", end='')
+    print("\n후위순회:\t", end='')
     t.post_order(t.root)
-    print("\n레벨순회:  ", end='')
+    print("\n레벨순회:\t", end='')
     t.level_order(t.root)

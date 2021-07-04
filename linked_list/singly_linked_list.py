@@ -1,11 +1,11 @@
 class SList:
 
     class Node:
-        def __init__(self, item, link):  # 노드 생성자
-            self.item = item  # 항목
+        def __init__(self, item, link):
+            self.item = item
             self.next = link  # 다음 노드 레퍼런스
 
-    def __init__(self):  # 단순 연결 리스트 생성자
+    def __init__(self):
         self.head = None
         self.size = 0
 
@@ -20,24 +20,24 @@ class SList:
         self.size += 1
 
     def insert_after(self, item, p):  # p가 가리키는 노드 다음에 새 노드 삽입
-        p.next = self.Node(item, p.next)  # 새 노드가 p 다음 노드
+        p.next = self.Node(item, p.next)
         self.size += 1
 
-    def delete_front(self):  # 연결 리스트의 맨 앞 노드 삭제
+    def delete_front(self):
         if self.is_empty():
             raise EmptyError('Underflow')
         else:
-            self.head = self.head.next  # head가 둘째 노드를 참조
+            self.head = self.head.next
             self.size -= 1
 
     def delete_after(self, p):  # p가 가리키는 노드의 다음 노드 삭제
         if self.is_empty():
             raise EmptyError('Underflow')
-        t = p.next  # t가 가리키는 노드가 삭제(무시)하려는 노드
+        t = p.next  # 삭제(무시)하려는 노드
         p.next = t.next
         self.size -= 1
 
-    def search(self, target):  # target: 찾으려는 항목
+    def search(self, target):
         p = self.head
         for k in range(self.size):
             if target == p.item:
@@ -52,7 +52,7 @@ class SList:
                 print(p.item, '-> ', end='')
             else:
                 print(p.item)
-            p = p.next  # 순차탐색
+            p = p.next
 
 
 class EmptyError(Exception):

@@ -1,7 +1,6 @@
 from binary_heap import BHeap
 
 if __name__ == "__main__":
-    # 생성
     a = [None]*1
     a.append([90, 'watermelon'])
     a.append([80, 'pear'])
@@ -17,7 +16,6 @@ if __name__ == "__main__":
     a.append([40, 'kiwi'])
     b = BHeap(a)
 
-    # 출력
     print("힙 만들기 전:")
     b.print_heap()
 

@@ -7,12 +7,11 @@ class DList:
             self.next = link
 
     def __init__(self):
-        # head와 tail에 대응하는 노드 2개 만들고 시작
-        # self.size = 0: 탐색, 출력할때 이 노드 두개를 건너뛸 것
+        # head와 tail에 대응하는 노드 2개 생성
         self.head = self.Node(None, None, None)
         self.tail = self.Node(None, self.head, None)
         self.head.next = self.tail
-        self.size = 0
+        self.size = 0   # head, tail no-count
 
     def is_empty(self):
         return self.size == 0
@@ -45,14 +44,14 @@ class DList:
     def print_list(self):
         if self.is_empty():
             print("리스트 비어있음")
-            return  # 중첩 제거
+            return
         p = self.head.next  # 초기 head 건너뛰기
         while p != self.tail:   # 초기 tail 건너뛰기
             if p.next != self.tail:
                 print(p.item, ' <=> ', end='')
             else:
                 print(p.item)
-            p = p.next  # 순차탐색
+            p = p.next
 
 
 class EmptyError(Exception):
