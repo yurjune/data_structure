@@ -1,4 +1,3 @@
-# 파이썬 리스트로 구현한 스택
 class Stack:
     def __init__(self):
         self.stack = []
@@ -32,15 +31,7 @@ a.push("farewell")
 
 print(a.peek())
 print(a.pop())
-
-print(a.peek())
 print(a.pop())
-
-print(a.peek())
 print(a.pop())
-
-print(a.peek())
 print(a.pop())
-
-print(a.peek())
 print(a.pop())

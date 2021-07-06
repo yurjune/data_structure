@@ -20,7 +20,8 @@ if __name__ == "__main__":
     print('\n중위순회:\t', end='')
     bst.in_order(bst.root)
 
-    print('\n250:', bst.get(250))
+    print('\n250 찾기:\t', end='')
+    print(bst.get(250))
 
     bst.delete(200)
     print('200 삭제 후:')

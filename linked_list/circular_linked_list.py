@@ -32,7 +32,6 @@ class CList:
     def delete(self):
         if self.is_empty():
             raise EmptyError("underflow")
-
         if self.size == 1:
             self.last = None
         else:
@@ -62,10 +61,21 @@ s.insert('cherry')
 s.insert('orange')
 s.insert('apple')
 s.print_list()
-
 print('s의 길이:', s.size)
 print('s의 첫 항목:', s.first())
 
+s.delete()
+print('첫 노드 삭제 후: ', end='')
+s.print_list()
+print('s의 길이:', s.size)
+print('s의 첫 항목:', s.first())
+
+s.delete()
+print('첫 노드 삭제 후: ', end='')
+s.print_list()
+s.delete()
+print('첫 노드 삭제 후: ', end='')
+s.print_list()
 s.delete()
 print('첫 노드 삭제 후: ', end='')
 s.print_list()

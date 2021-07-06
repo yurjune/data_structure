@@ -14,7 +14,7 @@ class SList:
 
     def insert_front(self, item):  # 연결 리스트의 맨 앞에 새 노드 삽입
         if self.is_empty():
-            self.head = self.Node(item, None)  # head가 새 노드 참조
+            self.head = self.Node(item, None)
         else:
             self.head = self.Node(item, self.head)
         self.size += 1

@@ -34,7 +34,7 @@ class BST:
         return self.minimum(node.left)
 
     def put(self, key, value):
-        self.root = self.put_item(self.root, key, value)    # 노드를 서로 연결
+        self.root = self.put_item(self.root, key, value)
 
     def put_item(self, node, key, value):
         if node == None:
@@ -45,7 +45,7 @@ class BST:
             node.right = self.put_item(node.right, key, value)
         else:
             node.value = value
-        return node  # put에서의 self.root에게 값을 그대로 돌려줌
+        return node
 
     def delete_min(self):
         if self.root == None:
@@ -106,7 +106,7 @@ class BST:
                 self.post_order(node.right)
             print(node.key,' ', end='')
 
-    def level_order(self, root):  # 레벨순회만 큐, 나머지는 스택
+    def level_order(self, root):
         queue = []
         queue.append(root)
 
