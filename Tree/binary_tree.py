@@ -9,6 +9,12 @@ class BinaryTree:
     def __init__(self):
         self.root = None
 
+    def height(self, root):
+        if root == None:
+            return 0
+        # 한 칸 내려갈때마다 길이 1증가
+        return 1 + max(self.height(root.left), self.height(root.right))
+
     def pre_order(self, node):  # 전위순회
         if node != None:
             print(str(node.item),' ', end='')
@@ -44,9 +50,3 @@ class BinaryTree:
                 queue.append(target.left)
             if target.right:
                 queue.append(target.right)
-
-    def height(self, root):
-        if root == None:
-            return 0
-        # 한 칸 내려갈때마다 길이 1증가
-        return 1 + max(self.height(root.left), self.height(root.right))

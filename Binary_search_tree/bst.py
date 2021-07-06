@@ -23,16 +23,6 @@ class BST:
         else:
             return node.value
 
-    def min(self):
-        if self.root == None:
-            return None
-        return self.minimum(self.root)
-
-    def minimum(self, node):
-        if node.left == None:
-            return node
-        return self.minimum(node.left)
-
     def put(self, key, value):
         self.root = self.put_item(self.root, key, value)
 
@@ -46,6 +36,16 @@ class BST:
         else:
             node.value = value
         return node
+
+    def min(self):
+        if self.root == None:
+            return None
+        return self.minimum(self.root)
+
+    def minimum(self, node):
+        if node.left == None:
+            return node
+        return self.minimum(node.left)
 
     def delete_min(self):
         if self.root == None:
@@ -117,9 +117,3 @@ class BST:
                 queue.append(target.left)
             if target.right:
                 queue.append(target.right)
-
-    def height(self, root):
-        if root == None:
-            return 0
-        # 한 칸 내려갈때마다 길이 1증가
-        return 1 + max(self.height(root.left), self.height(root.right))
