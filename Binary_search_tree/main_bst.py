@@ -19,6 +19,8 @@ if __name__ == "__main__":
     bst.pre_order(bst.root)
     print('\n중위순회:\t', end='')
     bst.in_order(bst.root)
+    print('\n후위순회:\t', end='')
+    bst.post_order(bst.root)
 
     print('\n250 찾기:\t', end='')
     print(bst.get(250))

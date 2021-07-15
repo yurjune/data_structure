@@ -33,8 +33,7 @@ class SList:
     def delete_after(self, p):  # p가 가리키는 노드의 다음 노드 삭제
         if self.is_empty():
             raise EmptyError('Underflow')
-        t = p.next  # 삭제(무시)하려는 노드
-        p.next = t.next
+        p.next = p.next.next
         self.size -= 1
 
     def search(self, target):
@@ -85,5 +84,3 @@ s.print_list()
 print('오렌지 다음 노드 삭제 후:\t', end='')
 s.delete_after(s.head.next.next)
 s.print_list()
-
-# p를 편하게 지정하는 방법?

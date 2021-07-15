@@ -20,33 +20,36 @@ class AVLTree:
         left_child = node.left
         node.left = left_child.right    # 서브트리 이식
         left_child.right = node
+        # node의 높이 갱신
         node.height = 1 + max(self.height(node.left), self.height(node.right))
-        left_child.height = 1 + \
-            max(self.height(left_child.left), self.height(left_child.right))
-        return left_child   # 리턴으로 연결
+        left_child.height = 1 + max(self.height(left_child.left), self.height(left_child.right))
+        return left_child   # 이후 리턴값으로 노드 연결
 
     def rotate_left(self, node):
         right_child = node.right
         node.right = right_child.left
         right_child.left = node
         node.height = 1 + max(self.height(node.left), self.height(node.right))
-        right_child.height = 1 + \
-            max(self.height(right_child.left), self.height(right_child.right))
+        right_child.height = 1 + max(self.height(right_child.left), self.height(right_child.right))
         return right_child
 
     def balance_index(self, node):
         return self.height(node.left) - self.height(node.right)
 
     def balance(self, node):
-        if self.balance_index(node) > 1:    # 왼쪽 자식이 높은 경우
-            if self.balance_index(node.left) < 0:   # 왼쪽 자식의 오른쪽 서브트리가 높은 경우
+        # LR Case: 왼쪽-오른쪽 회전
+        # LL Case: 오른쪽 회전
+        # RL Case: 오른쪽-왼쪽 회전
+        # RR Case: 왼쪽 회전
+        if self.balance_index(node) > 1:
+            if self.balance_index(node.left) < 0:   # LR Case
                 node.left = self.rotate_left(node.left)
-            node = self.rotate_right(node)
+            node = self.rotate_right(node)  # LR, LL Case
 
         elif self.balance_index(node) < -1:
-            if self.balance_index(node.right) > 0:   # 오른쪽 자식의 왼쪽 서브트리가 높은 경우
+            if self.balance_index(node.right) > 0:  # RL Case
                 node.right = self.rotate_right(node.right)
-            node = self.rotate_left(node)
+            node = self.rotate_left(node)   # RL, RR Case
         return node
 
     def put(self, key, value):
@@ -59,10 +62,9 @@ class AVLTree:
             node.left = self.put_item(node.left, key, value)
         elif node.key < key:
             node.right = self.put_item(node.right, key, value)
-        else:   # 덮어씌우기
+        else:
             node.value = value
             return node
-        # node의 높이 갱신
         node.height = 1 + max(self.height(node.left), self.height(node.right))
         return self.balance(node)
 
