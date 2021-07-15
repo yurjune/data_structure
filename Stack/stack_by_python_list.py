@@ -23,13 +23,15 @@ class Stack:
 
 
 a = Stack()
-
 a.push("hello")
 a.push("hi")
 a.push("bye")
 a.push("farewell")
 
+print('peek: ', end='')
 print(a.peek())
+
+print('차례로 꺼내기:')
 print(a.pop())
 print(a.pop())
 print(a.pop())

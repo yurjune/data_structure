@@ -24,3 +24,20 @@ class Queue:
             print("Queue is Empty")
             return  # return None
         return self.queue[-1]
+
+a = Queue()
+
+a.enqueue("hello")
+a.enqueue("hi")
+a.enqueue("bye")
+a.enqueue("farewell")
+
+print('peek: ', end='')
+print(a.peek())
+
+print('차례로 꺼내기:')
+print(a.dequeue())
+print(a.dequeue())
+print(a.dequeue())
+print(a.dequeue())
+print(a.dequeue())

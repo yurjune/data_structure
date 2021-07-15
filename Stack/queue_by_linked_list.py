@@ -59,5 +59,10 @@ queue.enqueue("grape")
 queue.enqueue("muscat")
 queue.print_queue()
 
+
+print('peek: ', end='')
+print(queue.peek())
+print('차례로 꺼내기:')
 print(queue.dequeue())
 print(queue.dequeue())
+queue.print_queue()
