@@ -1,11 +1,12 @@
+# 직접 구현: 부정확할 수 있음
 # 단일연결리스트로 구현한 큐
 # 추가된 노드는 새 rear가 되고, 이전 rear는 새 rear를 next로 가리킨다
 # front부터 꺼낸다
 
 class Node:
-    def __init__(self, item, link):
+    def __init__(self, item, next):
         self.item = item
-        self.next = link
+        self.next = next
 
 
 class LinkedListQueue:
@@ -25,7 +26,7 @@ class LinkedListQueue:
         self.size += 1
         # self.front = new_node
         # self.rear = new_node 일 때, 
-        # self.rear.next를 바꾸면 self.front.next도 바뀜
+        # self.rear.next를 바꾸면 self.front.next도 바뀜?
 
     def dequeue(self):
         if self.size == 0:
@@ -44,21 +45,20 @@ class LinkedListQueue:
     def print_queue(self):
         if self.size == 0:
             return None
-        target = self.front
+        curr = self.front
         print('(front) ', end='')
-        while target.next:
-            print(target.item, '=> ', end='')
-            target = target.next
-        print(target.item, '(rear)')
+        while curr.next:
+            print(curr.item, '=> ', end='')
+            curr = curr.next
+        print(curr.item, '(rear)')
 
 
 queue = LinkedListQueue()
-queue.enqueue("apple")
+queue.enqueue("apricot")
 queue.enqueue("peach")
 queue.enqueue("grape")
 queue.enqueue("muscat")
 queue.print_queue()
-
 
 print('peek: ', end='')
 print(queue.peek())

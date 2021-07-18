@@ -1,9 +1,9 @@
 class CList:
 
-    class _Node:
-        def __init__(self, item, link):
+    class Node:
+        def __init__(self, item, next):
             self.item = item
-            self.next = link
+            self.next = next
 
     def __init__(self):
         self.last = None
@@ -12,70 +12,61 @@ class CList:
     def is_empty(self):
         return self.size == 0
 
-    # 항상 last의 다음 위치(맨 앞자리)에만 추가 가능
+    # last의 다음 위치(맨 앞자리)에만 추가 가능
     def insert(self, item):
-        n = self._Node(item, None)
+        new_node = self.Node(item, None)
         if self.is_empty():
-            n.next = n
-            self.last = n
+            new_node.next = new_node
+            self.last = new_node
         else:
-            n.next = self.last.next
-            self.last.next = n
+            new_node.next = self.last.next
+            self.last.next = new_node   # 순환
         self.size += 1
 
-    def first(self):
+    def first_item(self):
         if self.is_empty():
             raise EmptyError('underflow')
-        f = self.last.next
-        return f.item
+        first = self.last.next
+        return first.item
 
-    def delete(self):
+    def last_item(self):
+        if self.is_empty():
+            raise EmptyError('underflow')
+        return self.last.item
+
+    def delete(self):   # 맨 앞 노드 삭제
         if self.is_empty():
             raise EmptyError("underflow")
         if self.size == 1:
             self.last = None
         else:
-            x = self.last.next
-            self.last.next = x.next
+            first = self.last.next
+            self.last.next = first.next
         self.size -= 1
 
     def print_list(self):
         if self.is_empty():
-            print("리스트 비어있음")
-        else:
-            f = self.last.next
-            p = f
-            while p.next != f:
-                print(p.item, '=> ', end='')
-                p = p.next
-            print(p.item)
+            return print('비어 있음')
+        first = self.last.next
+        curr = first
+        while curr.next != first:
+            print(curr.item, '-> ', end='')
+            curr = curr.next
+        print(curr.item)
 
 
 class EmptyError(Exception):
     pass
 
 
-s = CList()
-s.insert('pear')
-s.insert('cherry')
-s.insert('orange')
-s.insert('apple')
-s.print_list()
-print('s의 길이:', s.size)
-print('s의 첫 항목:', s.first())
+clist = CList()
+clist.insert('grape')
+clist.insert('grapefruit')
+clist.insert('plum')
+clist.insert('lemon')
+clist.print_list()
+print(f'first: {clist.first_item()}, last: {clist.last_item()}')
 
-s.delete()
-print('첫 노드 삭제 후: ', end='')
-s.print_list()
-print('s의 길이:', s.size)
-print('s의 첫 항목:', s.first())
+clist.delete()
+clist.print_list()
 
-s.delete()
-print('첫 노드 삭제 후: ', end='')
-s.print_list()
-s.delete()
-print('첫 노드 삭제 후: ', end='')
-s.print_list()
-s.delete()
-print('첫 노드 삭제 후: ', end='')
-s.print_list()
