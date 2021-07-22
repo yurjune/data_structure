@@ -17,22 +17,26 @@ class DList:
         return self.size == 0
 
     def insert_before(self, item, node):
-        new_node = self.Node(item, node.prev, node)
-        node.prev.next = new_node
+        prev_node = node.prev
+        new_node = self.Node(item, prev_node, node)
+        prev_node.next = new_node
         node.prev = new_node
         self.size += 1
 
     def insert_after(self, item, node):
-        new_node = self.Node(item, node, node.next)
-        node.next.prev = new_node
+        next_node = node.next
+        new_node = self.Node(item, node, next_node)
+        next_node.prev = new_node
         node.next = new_node
         self.size += 1
 
     def delete(self, target):
         if self.is_empty():
             raise EmptyError('Underflow')
-        target.prev.next = target.next
-        target.next.prev = target.prev
+        prev_node = target.prev
+        next_node = target.next
+        prev_node.next = next_node
+        next_node.prev = prev_node
         self.size -= 1
 
     def print_list(self):
