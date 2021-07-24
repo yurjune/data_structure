@@ -1,3 +1,7 @@
+# 전위순회: ROOT-L-R
+# 중위순회: L-ROOT-R
+# 후위순회: L-R-ROOT
+
 class Node:
     def __init__(self, item, left=None, right=None):
         self.item = item
@@ -50,3 +54,4 @@ class BinaryTree:
                 queue.append(target.left)
             if target.right:
                 queue.append(target.right)
+

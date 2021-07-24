@@ -1,7 +1,7 @@
 from binary_tree import BinaryTree, Node
 
 if __name__ == "__main__":
-    t = BinaryTree()
+    tree = BinaryTree()
 
     n1 = Node(100)
     n2 = Node(200)
@@ -12,7 +12,7 @@ if __name__ == "__main__":
     n7 = Node(700)
     n8 = Node(800)
 
-    t.root = n1
+    tree.root = n1
     n1.left = n2
     n1.right = n3
     n2.left = n4
@@ -22,10 +22,10 @@ if __name__ == "__main__":
     n4.left = n8
 
     print("전위순회:\t", end='')
-    t.pre_order(t.root)
+    tree.pre_order(tree.root)
     print("\n중위순회:\t", end='')
-    t.in_order(t.root)
+    tree.in_order(tree.root)
     print("\n후위순회:\t", end='')
-    t.post_order(t.root)
+    tree.post_order(tree.root)
     print("\n레벨순회:\t", end='')
-    t.level_order(t.root)
+    tree.level_order(tree.root)
