@@ -1,32 +1,21 @@
 from binary_heap import BHeap
 
 if __name__ == "__main__":
-    a = [None]*1
-    a.append([90, 'watermelon'])
-    a.append([80, 'pear'])
-    a.append([70, 'melon'])
-    a.append([50, 'lime'])
-    a.append([60, 'mango'])
-    a.append([20, 'cherry'])
-    a.append([30, 'grape'])
-    a.append([35, 'orange'])
-    a.append([10, 'apricot'])
-    a.append([15, 'banana'])
-    a.append([45, 'lemon'])
-    a.append([40, 'kiwi'])
-    b = BHeap(a)
+    array = [None]*1
+    array.append([90, 'watermelon'])
+    array.append([80, 'pear'])
+    array.append([70, 'melon'])
+    array.append([50, 'lime'])
+    array.append([60, 'mango'])
+    array.append([20, 'cherry'])
+    array.append([30, 'grape'])
+    array.append([35, 'orange'])
+    array.append([10, 'apricot'])
+    array.append([15, 'banana'])
+    array.append([45, 'lemon'])
+    array.append([40, 'kiwi'])
+    bheap = BHeap(array)
 
-    print("힙 만들기 전:")
-    b.print_heap()
-
-    b.create_heap()
+    bheap.create_heap()
     print("최소 힙:")
-    b.print_heap()
-
-    print("최솟값 삭제 후:")
-    print(b.delete_min())
-    b.print_heap()
-
-    b.insert([5, 'apple'])
-    print("5 삽입 후:")
-    b.print_heap()
+    bheap.print_heap()

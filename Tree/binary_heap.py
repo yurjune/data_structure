@@ -1,14 +1,17 @@
+# 최소힙: 부모 노드의 값 < 자식 노드의 값
+
 class BHeap:  # 최소힙
     def __init__(self, array):
         self.array = array  # array = [None]*1
-        self.N = len(array)-1  # 첫 항목은 항상 None
+        self.N = len(array)-1  # 항목수: 첫 항목은 항상 None
 
     def create_heap(self):
-        for i in range(self.N // 2, 0, -1):
+        # array[N//2 + 1] ~ array[N]은 leaf node이므로 각각의 노드가 힙 크기가 1인 독립적인 최소힙
+        for i in range(self.N//2, 0, -1):
             self.down_heap(i)
 
-    def insert(self, item):
-        self.array.append(item)  # a.append([30, 'grape'])
+    def insert(self, key_value):
+        self.array.append(key_value)  # a.append([30, 'grape'])
         self.N += 1
         self.up_heap(self.N)
 
@@ -17,13 +20,14 @@ class BHeap:  # 최소힙
             print("비어 있음")
             return None
         minimum = self.array[1]
+        # 루트의 키를 삭제하고 마지막 항목을 루트로
         self.array[1], self.array[-1] = self.array[-1], self.array[1]
         del self.array[-1]
         self.N -= 1
         self.down_heap(1)
         return minimum
 
-    def down_heap(self, i):
+    def down_heap(self, i):  # 인수: 노드 번호
         while 2*i <= self.N:
             k = 2*i  # 왼쪽 자식
             # 자식 승자(더 작은 쪽) 정하기
@@ -40,7 +44,7 @@ class BHeap:  # 최소힙
         # [j]: 자식, [j//2]: 부모
         while j > 1 and self.array[j//2][0] > self.array[j][0]:
             self.array[j], self.array[j//2] = self.array[j//2], self.array[j]
-            j = j//2    # 레벨 올라가기
+            j //= 2    # 레벨 올라가기
 
     def print_heap(self):
         for i in range(1, self.N+1):
