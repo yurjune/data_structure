@@ -9,17 +9,10 @@ def dfs(graph, v, visited):
         if not visited[i]:
             dfs(graph, i, visited)  # 재귀
 
-graph = [
-    [],
-    [2, 3, 8],
-    [1, 7],
-    [1, 4, 5],
-    [3, 5],
-    [3, 4],
-    [7],
-    [2, 6, 8],
-    [1, 7]
-]
-visited = [False] * 9
 
-dfs(graph, 1, visited)
+graph = [[2, 1], [3, 0], [3, 0], [9, 8, 2, 1], [5], [7, 6, 4], [7, 5], [6, 5], [3], [3]]
+visited = [False] * len(graph)
+
+for i in range(len(graph)):  # 연결성분이 2개 이상일 수 있으므로
+    if not visited[i]:
+        dfs(graph, i, visited)  # 0 2 3 9 8 1 4 5 7 6
