@@ -24,9 +24,7 @@ class LinkedListQueue:
             self.rear.next = new_node
             self.rear = self.rear.next
         self.size += 1
-        # self.front = new_node
-        # self.rear = new_node 일 때, 
-        # self.rear.next를 바꾸면 self.front.next도 바뀜?
+        # self.rear.next를 바꾸면 self.front.next도 바뀐다
 
     def dequeue(self):
         if self.size == 0:

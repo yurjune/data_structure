@@ -2,24 +2,30 @@
 # 임의의 노드에서 시작하여 인접한 노드를 모두 확인한 후 다음 depth를 탐색
 # 큐 자료구조 활용
 
-graph = [[2, 1], [3, 0], [3, 0], [9, 8, 2, 1], [5], [7, 6, 4], [7, 5], [6, 5], [3], [3]]
-N = len(graph)
-visited = [False] * N
+from collections import deque
 
-
-def bfs(start):
-    queue = []
-    queue.append(start)
+def bfs(graph, start, visited):
+    queue = deque([start])
     visited[start] = True
-    while len(queue) != 0:
-        v = queue.pop(0)
-        print(v, '', end='')
+    while queue:
+        v = queue.popleft()
+        print(v, end=' ')
         for i in graph[v]:
             if not visited[i]:
-                visited[i] = True
                 queue.append(i)
+                visited[i] = True
 
-print('BFS 방문 순서: ', end='')
-for i in range(N):
-    if not visited[i]:
-        bfs(i)
+graph = [
+    [],
+    [2, 3, 8],
+    [1, 7],
+    [1, 4, 5],
+    [3, 5],
+    [3, 4],
+    [7],
+    [2, 6, 8],
+    [1, 7]
+]
+visited = [False] * 9
+
+bfs(graph, 1, visited)
