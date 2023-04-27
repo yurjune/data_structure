@@ -10,8 +10,8 @@ class Node:
 
 
 class BinaryTree:
-    def __init__(self):
-        self.root = None
+    def __init__(self, root=None):
+        self.root = root
 
     def height(self, root):
         if root == None:
@@ -21,7 +21,7 @@ class BinaryTree:
 
     def pre_order(self, node):  # 전위순회
         if node != None:
-            print(str(node.item),' ', end='')
+            print(str(node.item), ' ', end='')
             if node.left:
                 self.pre_order(node.left)
             if node.right:
@@ -31,7 +31,7 @@ class BinaryTree:
         if node != None:
             if node.left:
                 self.in_order(node.left)
-            print(str(node.item),' ', end='')
+            print(str(node.item), ' ', end='')
             if node.right:
                 self.in_order(node.right)
 
@@ -41,7 +41,7 @@ class BinaryTree:
                 self.post_order(node.left)
             if node.right:
                 self.post_order(node.right)
-            print(str(node.item),' ', end='')
+            print(str(node.item), ' ', end='')
 
     def level_order(self, root):  # 레벨순회만 큐, 나머지는 스택
         queue = []
@@ -49,7 +49,7 @@ class BinaryTree:
 
         while len(queue) != 0:
             target = queue.pop(0)
-            print(str(target.item),' ', end='')
+            print(str(target.item), ' ', end='')
             if target.left:
                 queue.append(target.left)
             if target.right:

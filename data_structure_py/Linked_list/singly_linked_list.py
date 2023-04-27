@@ -72,4 +72,3 @@ print(f'melon은 {slist.search("melon")}번 째')
 slist.delete_after(slist.head)
 slist.delete_front()
 slist.print_list()
-
